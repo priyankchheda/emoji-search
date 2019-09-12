@@ -1,22 +1,17 @@
-""" Shell Sort """
-
-from utils import validate_input_collection, SortingException
+""" Implementation of Shell Sort algorithm """
 
 def shell(array):
     """ sort collection using shell sort """
-    if not validate_input_collection(array):
-        raise SortingException("mixed type present in list")
+    length = len(array)
+    gaps = [701, 301, 132, 57, 23, 10, 4, 1]
 
-    array_len = len(array)
-
-    h = 1
-    while h < array_len/3:
-        h = h * 3 + 1
-
-    while h >= 1:
-        for i in range(h, array_len):
-            j = i
-            while j >=h and array[j] < array[j-h]:
-                array[j], array[j-h] = array[j-h], array[j]
-                j = j-h
-        h = h//3
+    for gap in gaps:
+        h = gap
+        while h < length:
+            temp = array[h]
+            i = h
+            while i >= gap and array[i - gap] > temp:
+                array[i] = array[i - gap]
+                i -= gap
+            array[i] = temp
+            h += 1

@@ -5,8 +5,20 @@ from bubble import bubble
 from selection import selection
 from insertion import insertion
 from shell import shell
-from utils import SortingException
-from dataset import VALID_USECASE, INVALID_USECASE
+
+
+VALID_USECASE = [
+    ([], []),
+    ([1], [1]),
+    ([-1], [-1]),
+    ([-2, 1], [-2, 1]),
+    ([100, -100, -1110], [-1110, -100, 100]),
+    ([5, 3, 2, 4, 1], [1, 2, 3, 4, 5]),
+    ([1234, 4567, 567456, 3215, 54745, 1357357],
+     [1234, 3215, 4567, 54745, 567456, 1357357]),
+    ([1.2, 1.3, 1.1, 1.0, 0.9], [0.9, 1.0, 1.1, 1.2, 1.3]),
+    (["test", "test2", "test1", "a22"], ["a22", "test", "test1", "test2"])
+]
 
 
 class TestBubbleSort:
@@ -17,13 +29,6 @@ class TestBubbleSort:
         bubble(test_input)
         assert test_input == output
 
-    @pytest.mark.parametrize("test_input, output", INVALID_USECASE)
-    def test_bubble_sort_invalid_input(self, test_input, output):
-        """ test for invalid inputs """
-        with pytest.raises(SortingException) as excinfo:
-            bubble(test_input)
-        assert str(excinfo.value) == output
-
 
 class TestSelectionSort:
     """ Selection sort test cases """
@@ -32,13 +37,6 @@ class TestSelectionSort:
         """ test for valid inputs """
         selection(test_input)
         assert test_input == output
-
-    @pytest.mark.parametrize("test_input, output", INVALID_USECASE)
-    def test_selection_sort_invalid_input(self, test_input, output):
-        """ test for invalid inputs """
-        with pytest.raises(SortingException) as excinfo:
-            selection(test_input)
-        assert str(excinfo.value) == output
 
 
 class TestInsertionSort:
@@ -49,13 +47,6 @@ class TestInsertionSort:
         insertion(test_input)
         assert test_input == output
 
-    @pytest.mark.parametrize("test_input, output", INVALID_USECASE)
-    def test_insertion_sort_invalid_input(self, test_input, output):
-        """ test for invalid inputs """
-        with pytest.raises(SortingException) as excinfo:
-            insertion(test_input)
-        assert str(excinfo.value) == output
-
 
 class TestShellSort:
     """ Shell sort test cases """
@@ -64,10 +55,3 @@ class TestShellSort:
         """ test for valid inputs """
         shell(test_input)
         assert test_input == output
-
-    @pytest.mark.parametrize("test_input, output", INVALID_USECASE)
-    def test_shell_sort_invalid_input(self, test_input, output):
-        """ test for invalid inputs """
-        with pytest.raises(SortingException) as excinfo:
-            shell(test_input)
-        assert str(excinfo.value) == output
