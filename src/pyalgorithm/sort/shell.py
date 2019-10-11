@@ -6,12 +6,12 @@ def shell(array):
     gaps = [701, 301, 132, 57, 23, 10, 4, 1]
 
     for gap in gaps:
-        h = gap
-        while h < length:
-            temp = array[h]
-            i = h
+        j = gap
+        while j < length:
+            temp = array[j]
+            i = j
             while i >= gap and array[i - gap] > temp:
                 array[i] = array[i - gap]
                 i -= gap
             array[i] = temp
-            h += 1
+            j += 1
