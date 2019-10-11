@@ -3,7 +3,7 @@
 
 import pytest
 
-from pyalgorithm.sort import bubble, selection, insertion, shell
+from py3algorithm.sort import bubble, selection, insertion, shell
 
 
 VALID_USECASE = [
