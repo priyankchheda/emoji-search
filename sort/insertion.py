@@ -13,3 +13,15 @@ def insertion(array):
             index -= 1
 
         array[index] = value
+
+
+def main():
+    """ operational function """
+    arr = [56, 23, 89, 3, 55, 124, 87]
+    print("original array:", arr)
+    insertion(arr)
+    print("  sorted array:", arr)
+
+
+if __name__ == '__main__':
+    main()

@@ -9,3 +9,15 @@ def selection(array):
             if array[j] < array[min_element_index]:
                 min_element_index = j
         array[i], array[min_element_index] = array[min_element_index], array[i]
+
+
+def main():
+    """ operational function """
+    arr = [56, 23, 89, 3, 55, 124, 87]
+    print("original array:", arr)
+    selection(arr)
+    print("  sorted array:", arr)
+
+
+if __name__ == '__main__':
+    main()

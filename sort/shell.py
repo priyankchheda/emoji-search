@@ -15,3 +15,15 @@ def shell(array):
                 i -= gap
             array[i] = temp
             j += 1
+
+
+def main():
+    """ operational function """
+    arr = [56, 23, 89, 3, 55, 124, 87]
+    print("original array:", arr)
+    shell(arr)
+    print("  sorted array:", arr)
+
+
+if __name__ == '__main__':
+    main()
