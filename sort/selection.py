@@ -1,7 +1,12 @@
-""" Implementation of Selection Sort algorithm """
+""" Implementation of Selection Sort algorithm
+"""
+
 
 def selection(array):
-    """ sort collection using selection sort """
+    """ SelectionSort algorithm sorts an array by repeatedly finding the
+    minimum element (considering ascending order) from unsorted part and
+    putting it at the beginning.
+    """
     length = len(array)
     for i in range(length - 1):
         min_element_index = i

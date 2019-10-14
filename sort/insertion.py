@@ -1,7 +1,12 @@
-""" Implementation of Insertion Sort algorithm """
+""" Implementation of Insertion Sort algorithm
+"""
+
 
 def insertion(array):
-    """ sort collection using insertion sort """
+    """ InsertionSort is based on the idea that one element from the input
+    elements is consumed in each iteration to find its correct position
+    i.e, the position to which it belongs in a sorted array.
+    """
     length = len(array)
 
     for i in range(length):
