@@ -3,9 +3,12 @@
 
 
 def insertion(array):
-    """ InsertionSort is based on the idea that one element from the input
+    """ Insertion sort is based on the idea that one element from the input
     elements is consumed in each iteration to find its correct position
     i.e, the position to which it belongs in a sorted array.
+
+    :param array: list of elements that needs to be sorted
+    :type array: list
     """
     length = len(array)
 
@@ -18,15 +21,3 @@ def insertion(array):
             index -= 1
 
         array[index] = value
-
-
-def main():
-    """ operational function """
-    arr = [56, 23, 89, 3, 55, 124, 87]
-    print("original array:", arr)
-    insertion(arr)
-    print("  sorted array:", arr)
-
-
-if __name__ == '__main__':
-    main()
