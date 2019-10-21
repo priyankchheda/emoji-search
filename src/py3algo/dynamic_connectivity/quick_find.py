@@ -1,21 +1,20 @@
-""" Dynamic Connectivity Problem (Quick Find Solution)
+""" Quick Find is a Eager Approach.
 
-Given a set of N objects, connect two objects, or ask if two objects are
-connected (directly or in-directly).
+*Limitations:*
 
-Quick-Find defect:
-- Union too expensive (N array accesses)
+- Union is too expensive (N array accesses)
 - Trees are flat, but too expensive to keep them flat
 """
 
 
 class QuickFind:
-    """ QuickFind is a Eager Approach.
-    interpretation: elem1 and elem2 are connected iff they have the same id
-    """
+    """ elem1 and elem2 are connected iff they have the same id """
     def __init__(self, n):
-        """ initializing list of size n where value is same as index
+        """ Initializing list of size n where value is same as index
+
         Time Complexity: O(n)
+
+        :param n: number of elements
         """
         self.data = []
         for i in range(n):
@@ -23,7 +22,14 @@ class QuickFind:
 
     def connected(self, elem1, elem2):
         """ elem1 and elem2 are connected iff they have the same id
+
         Time Complexity: O(1)
+
+        :param elem1: element 1
+        :param elem2: element 2
+        :return: returns true iff two elem1 and elem2  are connected, else
+            false
+        :rtype: bool
         """
         return self.data[elem1] == self.data[elem2]
 
@@ -32,6 +38,9 @@ class QuickFind:
         objects that have the id of elem1 to that of elem2, or vice-versa.
 
         Time Complexity is O(n), which is too expensive.
+
+        :param elem1: element 1
+        :param elem2: element 2
         """
         pid = self.data[elem1]
         qid = self.data[elem2]
@@ -39,28 +48,3 @@ class QuickFind:
             if self.data[i] == pid:
                 self.data[i] = qid
 
-
-def main():
-    """ operational function """
-    print("initializing list of size 10")
-    quick_find = QuickFind(10)
-    print("connecting 1 and 2")
-    quick_find.union(1, 2)
-    print("connecting 3 and 4")
-    quick_find.union(3, 4)
-    print("connecting 0 and 5")
-    quick_find.union(0, 5)
-    print("connecting 5 and 6")
-    quick_find.union(5, 6)
-    print("connecting 2 and 7")
-    quick_find.union(2, 7)
-    print("connecting 8 and 3")
-    quick_find.union(8, 3)
-    print("is 8 and 9 connected?", quick_find.connected(8, 9))
-    print("connecting 9 and 4")
-    quick_find.union(9, 4)
-    print("is 8 and 9 connected?", quick_find.connected(8, 9))
-
-
-if __name__ == '__main__':
-    main()
