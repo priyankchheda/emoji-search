@@ -20,3 +20,10 @@ Quick Union
    :undoc-members:
    :show-inheritance:
 
+Weighted Quick Union
+--------------------
+
+.. automodule:: py3algo.dynamic_connectivity.weighted_quick_union
+   :members:
+   :undoc-members:
+   :show-inheritance:
