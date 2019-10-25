@@ -11,4 +11,4 @@ Welcome to py3algo's documentation!
    :caption: Contents:
 
    sorting
-
+   dynamic_connectivity
