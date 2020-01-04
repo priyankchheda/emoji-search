@@ -39,7 +39,7 @@ class Stack:
         return None
 
     def peek(self):
-        """  This method returns the last item in the list, which is aldo the
+        """  This method returns the last item in the list, which is also the
         item at the top of the Stack.
 
         This method runs in constant time because indexing into a list is done
