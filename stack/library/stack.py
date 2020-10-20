@@ -34,9 +34,9 @@ class Stack:
 
         :return: return top item of the stack or None, if stack is empty
         """
-        if self._items:
-            return self._items.pop()
-        return None
+        if not self._items:
+            raise IndexError('Stack is empty')
+        return self._items.pop()
 
     def peek(self):
         """  This method returns the last item in the list, which is also the
@@ -47,9 +47,9 @@ class Stack:
 
         :return: returns top of the stack or None, if stack is empty
         """
-        if self._items:
-            return self._items[-1]
-        return None
+        if not self._items:
+            raise IndexError('Stack is empty')
+        return self._items[-1]
 
     def size(self):
         """ This method returns the length of the list that is representing
@@ -73,27 +73,3 @@ class Stack:
         :return: returns true if stack is empty, else false
         """
         return self._items == []
-
-
-def main():
-    """ operational function """
-    stack = Stack()
-    print("stack is empty: ", stack.is_empty())
-    print("stack size: ", stack.size())
-    for i in range(5):
-        stack.push(i)
-
-    print("after inserting 5 elements")
-    print("stack is empty: ", stack.is_empty())
-    print("stack size: ", stack.size())
-
-    print("top element on stack: ", stack.peek())
-    print("popped element from stack: ", stack.pop())
-    print()
-    print("after popping one elements")
-    print("stack size: ", stack.size())
-    print("top element on stack: ", stack.peek())
-
-
-if __name__ == "__main__":
-    main()
