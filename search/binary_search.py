@@ -30,8 +30,7 @@ def binary_search_recursive(array, start, end, item):
         if array[median] < item:
             return binary_search_recursive(array, median+1, end, item)
         return binary_search_recursive(array, start, median-1, item)
-    else:
-        return None
+    return None
 
 
 def main():

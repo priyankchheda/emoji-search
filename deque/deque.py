@@ -1,4 +1,4 @@
-""" Implementation for Stack Data Structure """
+""" Implementation for Deque Data Structure """
 
 
 class Deque:
@@ -8,7 +8,7 @@ class Deque:
     """
 
     def __init__(self):
-        """ Initializing empty deque."""
+        """ Initializing empty deque """
         self.items = []
 
     def add_front(self, item):

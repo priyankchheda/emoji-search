@@ -35,9 +35,9 @@ class Queue:
 
         :return: front-most item of the queue or None, if the queue is empty
         """
-        if self.items:
-            return self.items.pop()
-        return None
+        if not self.items:
+            raise IndexError('queue is empty')
+        return self.items.pop()
 
     def peek(self):
         """ Returns the last item in the list, which represents the front-most
@@ -48,9 +48,9 @@ class Queue:
 
         :return: front-most item of the queue or None, if the queue is empty
         """
-        if self.items:
-            return self.items[-1]
-        return None
+        if not self.items:
+            raise IndexError('queue is empty')
+        return self.items[-1]
 
     def size(self):
         """ Returns the size of the Queue, which is represent bu the length
@@ -72,27 +72,3 @@ class Queue:
         :return: returns true if stack is empty, else false
         """
         return self.items == []
-
-
-def main():
-    """ operational function """
-    queue = Queue()
-    print("queue is empty: ", queue.is_empty())
-    print("queue size: ", queue.size())
-    for i in range(5):
-        queue.enqueue(i)
-
-    print("after inserting 5 elements")
-    print("queue is empty: ", queue.is_empty())
-    print("queue size: ", queue.size())
-
-    print("top element on queue: ", queue.peek())
-    print("popped element from queue: ", queue.dequeue())
-    print()
-    print("after popping one elements")
-    print("queue size: ", queue.size())
-    print("top element on queue: ", queue.peek())
-
-
-if __name__ == "__main__":
-    main()
