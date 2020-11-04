@@ -61,6 +61,68 @@ class AVLTree:
 
         self.root = _insert(self.root, key)
 
+    def delete(self, key):
+        """ delete value from AVL tree """
+        def find_min_node(node):
+            """ find the node with minimum value of give (sub)tree """
+            while node.left is not None:
+                node = node.left
+            return node
+
+        def _delete(root, key):
+            """ interal recursive method that works at node-level """
+            if root is None:
+                return root
+
+            if key < root.data:
+                root.left = _delete(root.left, key)
+            elif key > root.data:
+                root.right = _delete(root.right, key)
+            else:
+                if root.left is None and root.right is None:
+                    del root
+                    root = None
+                elif root.left is None:
+                    temp = root
+                    root = root.right
+                    del temp
+                elif root.right is None:
+                    temp = root
+                    root = root.left
+                    del temp
+                else:
+                    temp = find_min_node(root.right)
+                    root.data = temp.data
+                    root.right = _delete(root.right, temp.data)
+
+            root.height = max(self.get_height(root.left),
+                              self.get_height(root.right)) + 1
+
+            balance_factor = self.get_balance_factor(root)
+
+            # if node is unbalanced
+            # case 1 - left left
+            if balance_factor > 1 and self.get_balance_factor(root.left) >= 0:
+                return self.right_rotate(root)
+
+            # case 2 - right right
+            if balance_factor < -1 and self.get_balance_factor(root.right) <= 0:
+                return self.left_rotate(root)
+
+            # case 3 - left right
+            if balance_factor > 1 and self.get_balance_factor(root.left) < 0:
+                root.left = self.left_rotate(root.left)
+                return self.right_rotate(root)
+
+            # case 4 - right left
+            if balance_factor < -1 and self.get_balance_factor(root.right) > 0:
+                root.right = self.right_rotate(root.right)
+                return self.left_rotate(root)
+
+            return root
+
+        self.root = _delete(self.root, key)
+
     def right_rotate(self, node):
         """ perform right rotation on given node """
         left_node = node.left
@@ -119,14 +181,17 @@ def pre_order(node):
 def main():
     """ operational function """
     avl_tree = AVLTree()
-    avl_tree.insert(10)
-    avl_tree.insert(20)
-    avl_tree.insert(30)
-    avl_tree.insert(40)
-    avl_tree.insert(50)
-    avl_tree.insert(25)
+    for elem in [9, 5, 10, 0, 6, 11, -1, 1, 2]:
+        avl_tree.insert(elem)
 
-    pre_order(avl_tree.root) # 30 20 10 25 40 50
+    print("preorder traversal after insertion")
+    pre_order(avl_tree.root) # 9 1 0 -1 5 2 6 10 11
+    print()
+
+    avl_tree.delete(10)
+
+    print("preorder traversal after deletion")
+    pre_order(avl_tree.root) # 1 0 -1 9 5 2 6 11
     print()
 
 
