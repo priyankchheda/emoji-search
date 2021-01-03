@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "NotoColorEmoji";;
+  src: url(fonts/NotoColorEmoji.ttf) format("truetype");
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -19,6 +24,7 @@ input {
 }
 
 ul {
+  font-family: NotoColorEmoji;
   text-align: left;
 }
 
