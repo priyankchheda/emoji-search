@@ -5,6 +5,10 @@
 **Emoji Search Engine - Instant access to emoji**<br>
 Instantly access your favorite emoji just by typing few letters. It uses fuzzy search algorithm on the keywords to get the most optimal emoji you want.
 
+
+### DEMO
+[priyankchheda.github.io/emoji-search/](https://priyankchheda.github.io/emoji-search/)
+
 ![emoji-search](readme/emoji-search.gif)
 
 ## Contribution
